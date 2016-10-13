@@ -1,0 +1,14 @@
+/var/log/yum.log {
+        missingok
+        notifempty
+        size 30k
+        yearly
+        create 0600 root root
+        sharedscripts
+        postrotate
+        service rsyslog stop
+        rm -rf /var/spool/rsyslog/stat-yum
+        service rsyslog start
+        endscript
+}
+

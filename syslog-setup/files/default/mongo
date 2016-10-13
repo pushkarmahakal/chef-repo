@@ -1,0 +1,16 @@
+/var/log/mongodb/*.log {
+    rotate 7
+    daily
+    maxage 30
+    missingok
+    notifempty
+    copytruncate
+    compress
+    sharedscripts
+        postrotate
+        service rsyslog stop
+        rm -rf /var/spool/rsyslog/stat-mongo
+        service rsyslog start
+    endscript
+}
+
