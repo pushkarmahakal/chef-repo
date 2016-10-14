@@ -1,0 +1,33 @@
+/var/log/tomcat7/catalina.out {
+rotate 7
+daily
+maxage 30
+missingok
+notifempty
+copytruncate
+compress
+create 0644 tomcat tomcat
+sharedscripts
+postrotate
+service rsyslog stop
+rm -rf /var/spool/rsyslog/stat-catalina-out
+service rsyslog start
+endscript
+}
+/var/log/tomcat7/*.log {
+rotate 7
+daily
+maxage 30
+missingok
+notifempty
+copytruncate
+compress
+create 0644 tomcat tomcat
+sharedscripts
+postrotate
+service rsyslog stop
+rm -rf /var/spool/rsyslog/stat-{catalina-log,host-manager,localhost-log,manager,tomcat-access}
+service rsyslog start
+endscript
+}
+#------
