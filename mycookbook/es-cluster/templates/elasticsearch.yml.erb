@@ -1,0 +1,36 @@
+#Cluster name
+cluster.name: test-escluster
+##discovery type
+discovery.type: ec2
+##
+## #optional -Region setting to discover nodes
+cloud.aws.region: us-west-2
+##
+## #optional - filter cluster nodes by tag --> "type":"prod-elasticsearch"
+discovery.ec2.tag.type: test-escluster
+##
+## #optional - to store aws attributes to the nodes - for node awareness
+cloud.node.auto_attributes: true
+network :
+    host : <%= node['ipaddress'] %>
+    node :
+      name : <%= node['hostname'] %>
+#      #
+      discovery.zen.ping.multicast.enabled: false
+
+indices.recovery.internal_action_timeout: 30m
+indices.recovery.internal_action_long_timeout: 60m
+index.search.slowlog.threshold.query.debug: 0s
+index.search.slowlog.threshold.fetch.debug: 0s
+
+#      #
+#      # #If not using IAM roles
+path.conf: /etc/elasticsearch
+path.data: /data
+path.logs: /var/log/elasticsearch
+index.number_of_shards: 8
+index.number_of_replicas: 1
+path.repo: /etc/elasticsearch/backup
+node:
+  name: ZONE1-<%= node['hostname'] %>
+
