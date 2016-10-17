@@ -7,12 +7,13 @@
 # All rights reserved - Do Not Redistribute
 #
 
-group "elasticsearch" do
+user "elasticsearch" do
   action :create
 end
 
-user "elasticsearch" do
+group "elasticsearch" do
   action :create
+  members "elasticsearch"
 end
 
 directory "/data" do
