@@ -6,7 +6,6 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-tag(test-escluster)
 
 user "elasticsearch" do
   action :create
