@@ -7,6 +7,14 @@
 # All rights reserved - Do Not Redistribute
 #
 
+group "elasticsearch" do
+  action :create
+end
+
+user "elasticsearch" do
+  action :create
+end
+
 directory "/data" do
   mode 0755
   owner "elasticsearch"
