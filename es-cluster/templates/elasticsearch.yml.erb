@@ -32,5 +32,5 @@ index.number_of_shards: 8
 index.number_of_replicas: 1
 path.repo: /etc/elasticsearch/backup
 node:
-  name: ZONE1-<%= node['hostname'] %>
+  name: <%= node['placement_availability_zone'] %>-<%= node['hostname'] %>
 
