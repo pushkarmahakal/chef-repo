@@ -31,6 +31,11 @@ cookbook_file "/etc/rsyslog.d/22-graylog-tomcat.conf" do
    mode "0644"
 end
 
+cookbook_file "/etc/rsyslog.d/29-graylog-system.conf" do
+   source "29-graylog-system.conf"
+   mode "0644"
+end
+
 ########## 
 
 ruby_block "delete_line" do
