@@ -160,7 +160,10 @@ ruby_block "insert_line" do
   end
 end
 
-service 'tomcat7' do
+service "tomcat7" do
   action :restart
 end
 
+service "rsyslog" do
+  action :restart
+end
